@@ -42,6 +42,7 @@ def send(request, pk):
     return render(request, "notes/send.html", context)
 
 
+@login_required
 def detail(request, pk):
     note = get_object_or_404(Notes, pk=pk)
 
@@ -60,6 +61,7 @@ def detail(request, pk):
         return redirect("notes:index")
 
 
+@login_required
 def delete(request, pk):
     note = get_object_or_404(Notes, pk=pk)
     print(request.POST)

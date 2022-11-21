@@ -90,6 +90,7 @@ def usercard_create2(request):
     return render(request, "cards/usercard_create2.html", context=context)
 
 
+@login_required
 def usercard_detail(request, pk):
     # cards = UserCard.objects.get(user=request.user.pk)
     cards = UserCard.objects.get(pk=pk)
@@ -117,6 +118,7 @@ def usercard_detail(request, pk):
     return render(request, "cards/usercard_detail.html", context)
 
 
+@login_required
 def usercard_update(request, pk):
     cards = UserCard.objects.get(user=request.user)
     if request.method == "POST":
@@ -142,6 +144,7 @@ def usercard_update(request, pk):
     return render(request, "cards/usercard_update.html", context=context)
 
 
+@login_required
 def usercard_update2(request, pk):
     cards = UserCard.objects.get(pk=pk)
     if request.method == "POST":
@@ -164,6 +167,7 @@ def usercard_update2(request, pk):
     return render(request, "cards/usercard_update2.html", context=context)
 
 
+@login_required
 def usercard_delete(request):
     card = UserCard.objects.get(user_id=request.user.pk)
     card.delete()
@@ -184,6 +188,7 @@ dic = {
 }
 
 
+@login_required
 def usercard_comment(request, pk):
     if request.method == "POST":
         card = UserCard.objects.get(pk=pk)
@@ -241,6 +246,7 @@ def usercard_comment(request, pk):
     return render(request, "cards/usercard_comment.html", context)
 
 
+@login_required
 def usercard_comment2(request, pk):
     comment = UserComment.objects.get(pk=pk)
     card = comment.usercard
@@ -344,7 +350,7 @@ def group_create2(request, pk):
     }
     return render(request, "cards/group_create2.html", context)
 
-
+@login_required
 def group_detail(request, pk):
     groupcards = Groupcard.objects.get(pk=pk)
     context = {
@@ -355,6 +361,7 @@ def group_detail(request, pk):
     return render(request, "cards/group_detail.html", context)
 
 
+@login_required
 def groupcard_update(request, pk):
     cards = Groupcard.objects.get(pk=pk)
     if request.method == "POST":
@@ -377,6 +384,7 @@ def groupcard_update(request, pk):
     return render(request, "cards/groupcard_update.html", context=context)
 
 
+@login_required
 def groupcard_update2(request, pk):
     cards = Groupcard.objects.get(pk=pk)
     if request.method == "POST":
@@ -399,12 +407,14 @@ def groupcard_update2(request, pk):
     return render(request, "cards/groupcard_update2.html", context=context)
 
 
+@login_required
 def groupcard_delete(request, pk):
     card = Groupcard.objects.get(pk=pk)
     card.delete()
     return redirect("cards:index")
 
 
+@login_required
 def group_detail(request, pk):
     groupcards = Groupcard.objects.get(pk=pk)
     comments = groupcards.groupcomment_set.all()
@@ -424,6 +434,7 @@ def group_detail(request, pk):
     return render(request, "cards/group_detail.html", context)
 
 
+@login_required
 def gcomment_create(request, pk):
     if request.method == "POST":
         card = Groupcard.objects.get(pk=pk)
@@ -450,6 +461,7 @@ def gcomment_create(request, pk):
     return render(request, "cards/gcomment_create.html", context)
 
 
+@login_required
 def gcomment_create2(request, pk):
     comment = Groupcomment.objects.get(pk=pk)
     if request.method == "POST":
@@ -473,6 +485,7 @@ def gcomment_create2(request, pk):
     return render(request, "cards/gcomment_create2.html", context)
 
 
+@login_required
 def search(request):
     all_data = Groupcard.objects.filter(is_private=0).order_by("-pk")
     search = request.GET.get("search")
