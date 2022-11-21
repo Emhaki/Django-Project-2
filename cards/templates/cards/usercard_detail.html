@@ -1,4 +1,3 @@
-
 {% extends 'base_card.html' %}
 {% load mathfilters %}
 {% load django_bootstrap5 %}
@@ -348,9 +347,9 @@
               <div onclick="modal2(event);" data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                 <a type="button" class="btn p-0 m-0 {% if not comment.is_opened %} cargando {% endif %}" data-bs-toggle="modal" data-bs-target="#{{comment.id_text}}" style='position: absolute; top:{{ forloop.counter|intdiv:8|sub:1|mul:5|add:1 }}rem; left:36rem;'data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                   {% if comment.user.nickname %}
-                  <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">{{ comment.user.nickname }} </p>   
+                  <a class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}" href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user.nickname }} </a>   
                   {% else %}
-                  <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">{{ comment.user }} </p>   
+                  <a class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}" href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user }} </a>   
                   {% endif %}
                   <img src="/static/images/양말{{comment.socks}}.png" style='width:3.5rem; height:3.7rem' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                 </a>
@@ -359,9 +358,9 @@
               <div onclick="modal2(event);" data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                 <a type="button" class="btn p-0 ms-2 {% if not comment.is_opened %} cargando {% endif %}" data-bs-toggle="modal" data-bs-target="#{{comment.id_text}}" style='position: absolute; top:{{ forloop.counter|intdiv:8|mul:5|add:1 }}rem; left:{{forloop.counter|sub:1|mod:8|mul:5|add:1}}rem;' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                   {% if comment.user.nickname %}
-                  <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">{{ comment.user.nickname }} </p>   
+                  <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}" href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user.nickname }} </p>   
                   {% else %}
-                  <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">{{ comment.user }} </p>   
+                  <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}" href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user }} </p>   
                   {% endif %}
                   <img src="/static/images/양말{{comment.socks}}.png" style='width:3.7rem; height:3.7rem' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                 </a>
@@ -408,9 +407,9 @@
                         <div onclick="modal2(event);" data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                           <a type="button" class="btn p-0 m-0 {% if not comment.is_opened %} cargando {% endif %}" data-bs-toggle="modal" data-bs-target="#{{comment.id_text}}" style='position: absolute; top:{{ c|sub:1|mul:40|sub:forloop.counter|abs|intdiv:8|sub:1|mul:5|add:1 }}rem; left:36rem;'data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                             {% if comment.user.nickname %}
-                            <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">{{ comment.user.nickname }} </p>   
+                            <a class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}" href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user.nickname }} </a>   
                             {% else %}
-                            <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">{{ comment.user }} </p>   
+                            <a class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}" href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user }} </a>   
                             {% endif %}
                             <img src="/static/images/양말{{comment.socks}}.png" style='width:3.5rem; height:3.7rem' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                           </a>
@@ -419,9 +418,9 @@
                         <div onclick="modal2(event);" data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                           <a type="button" class="btn p-0 ms-2 {% if not comment.is_opened %} cargando {% endif %}" data-bs-toggle="modal" data-bs-target="#{{comment.id_text}}" style='position: absolute; top:{{ c|sub:1|mul:40|sub:forloop.counter|abs|intdiv:8|mul:5|add:1 }}rem; left:{{c|sub:1|mul:40|sub:forloop.counter|abs|sub:1|mod:8|mul:5|add:1}}rem;' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                             {% if comment.user.nickname %}
-                            <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">{{ comment.user.nickname }} </p>   
+                            <a class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}" href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user.nickname }} </a>   
                             {% else %}
-                            <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">{{ comment.user }} </p>   
+                            <a class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}" href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user }} </a>   
                             {% endif %}
                             <img src="/static/images/양말{{comment.socks}}.png" style='width:3.7rem; height:3.7rem' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                           </a>
@@ -436,9 +435,9 @@
                       <div onclick="modal2(event);" data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                         <a type="button" class="btn p-0 m-0 {% if not comment.is_opened %} cargando {% endif %}" data-bs-toggle="modal" data-bs-target="#{{comment.id_text}}" style='position: absolute; top:{{ forloop.counter|intdiv:8|sub:1|mul:5|add:1 }}rem; left:36rem;'data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                           {% if comment.user.nickname %}
-                          <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">{{ comment.user.nickname }} </p>   
+                          <a class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}" href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user.nickname }} </a>   
                           {% else %}
-                          <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">{{ comment.user }} </p>   
+                          <a class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}" href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user }} </a>   
                           {% endif %}
                           <img src="/static/images/양말{{comment.socks}}.png" style='width:3.5rem; height:3.7rem' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                         </a>
@@ -447,9 +446,9 @@
                       <div onclick="modal2(event);" data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                         <a type="button" class="btn p-0 ms-2 {% if not comment.is_opened %} cargando {% endif %}" data-bs-toggle="modal" data-bs-target="#{{comment.id_text}}" style='position: absolute; top:{{ forloop.counter|intdiv:8|mul:5|add:1 }}rem; left:{{forloop.counter|sub:1|mod:8|mul:5|add:1}}rem;' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                           {% if comment.user.nickname %}
-                          <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">{{ comment.user.nickname }} </p>   
+                          <a class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}" href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user.nickname }} </a>   
                           {% else %}
-                          <p class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">{{ comment.user }} </p>   
+                          <a class='fs-5 text-center m-0 p-0' style='color:white' data-comment-id="{{comment.pk}}" value="{{comment.pk}}" href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user }} </a>   
                           {% endif %}
                           <img src="/static/images/양말{{comment.socks}}.png" style='width:3.7rem; height:3.7rem' data-comment-id="{{comment.pk}}" value="{{comment.pk}}">
                         </a>
