@@ -30,10 +30,9 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG") == "True"
+DEBUG = os.getenv("DEBUG") == "Ture"
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "Kdt6team-env.eba-rmvmzut2.ap-northeast-2.elasticbeanstalk.com"]
-
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "Kdt6team-env.eba-rmvmzut2.ap-northeast-2.elasticbeanstalk.com",]
 
 
 # Application definition
@@ -42,9 +41,11 @@ INSTALLED_APPS = [
     "mathfilters",
     "notes",
     "shoppings",
+    "daphne",
     "chat",
     "cards",
     "vocies",
+    "channels",
     "accounts",
     "meetings",
     "widget_tweaks",
@@ -131,7 +132,6 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
-
 
 
 # Internationalization
