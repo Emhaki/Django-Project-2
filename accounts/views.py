@@ -61,7 +61,7 @@ state_token = secrets.token_urlsafe(16)
 
 def kakao_request(request):
     kakao_api = "https://kauth.kakao.com/oauth/authorize?response_type=code"
-    redirect_uri = "http://localhost:8000/accounts/kakao/login/callback/"
+    redirect_uri = "http://kdt6team-env.eba-rmvmzut2.ap-northeast-2.elasticbeanstalk.com/accounts/kakao/login/callback/"
     client_id = os.getenv("KAKAO_ID")
     return redirect(f"{kakao_api}&client_id={client_id}&redirect_uri={redirect_uri}")
 
@@ -70,7 +70,7 @@ def kakao_callback(request):
     data = {
         "grant_type": "authorization_code",
         "client_id": os.getenv("KAKAO_ID"),
-        "redirect_uri": "http://localhost:8000/accounts/kakao/login/callback/",
+        "redirect_uri": "http://kdt6team-env.eba-rmvmzut2.ap-northeast-2.elasticbeanstalk.com/accounts/kakao/login/callback/",
         "code": request.GET.get("code"),
         "client_secret": os.getenv("KAKAO_SECRET"),
     }
