@@ -212,6 +212,7 @@ MESSAGE_TAGS = {
 """
 기존 DATABASES 코드 아래에 아래 세 줄을 추가합니다.
 """
+
 import dj_database_url
 
 db_from_env = dj_database_url.config(conn_max_age=500)
