@@ -273,7 +273,7 @@
         <div class="modal-body pt-1">
           {% for follower in user.followers.all %}
             <div class='d-flex justify-content-center'>
-              <a href="{% url 'accounts:profile' follower.user.pk %}">{{follower.user.nickname}}</a>
+              <a href="{% url 'accounts:profile' follower.pk %}">{{follower.nickname}}</a>
             </div>
           {% endfor %}
           <div class='d-grid mt-5'>
@@ -283,13 +283,14 @@
       </div>
     </div>
   </div>
+
   <div class="modal fade" id="following" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body pt-1">
           {% for following in user.followings.all %}
             <div class='d-flex justify-content-center'>
-              <a href="{% url 'accounts:profile' following.user.pk %}">{{following.user.nickname}}</a>
+              <a href="{% url 'accounts:profile' following.pk %}">{{following.nickname}}</a>
             </div>
           {% endfor %}
           <div class='d-grid mt-5'>
