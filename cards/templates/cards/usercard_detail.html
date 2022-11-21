@@ -493,7 +493,7 @@
         </div>
         <div class='mb-2 rounded-2 p-1'>
           {% if comment.user.nickname %}
-          <a class='fs-5 text-center m-0 p-0' href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user.nickname }} </a>
+          <a class='fs-5 text-center m-0 p-0 btn btn-light' href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user.nickname }} </a>
           {% else %}
           <a class='fs-5 text-center m-0 p-0' href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user }} </a>
           {% endif %}
