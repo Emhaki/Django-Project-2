@@ -195,11 +195,15 @@
               나이 :
               {{ user.age_range }}</p>
             <div class='d-flex'>
-              <h5 class="me-1 text-primary">팔로워 :
+              <h5 class="me-1 text-primary">
+                <a type="button" data-bs-toggle="modal" data-bs-target="#follower">팔로워</a>
+                :
               </h5>
               <h5 class='me-3' id='followers-cnt'>
                 {{ user.followers.count }}</h5>
-              <h5 class="me-1 text-primary">팔로잉 :
+              <h5 class="me-1 text-primary">
+                <a type="button" data-bs-toggle="modal" data-bs-target="#following">팔로잉</a>
+                :
               </h5>
               <h5 class='me-3' id='followings-cnt'>
                 {{ user.followings.count }}</h5>
@@ -259,6 +263,38 @@
             {% endif %}
 
           {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="follower" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body pt-1">
+          {% for follower in user.followers.all %}
+            <div class='d-flex justify-content-center'>
+              <a href="{% url 'accounts:profile' follower.user.pk %}">{{follower.user.nickname}}</a>
+            </div>
+          {% endfor %}
+          <div class='d-grid mt-5'>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" aria-label="Close">닫기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="following" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body pt-1">
+          {% for following in user.followings.all %}
+            <div class='d-flex justify-content-center'>
+              <a href="{% url 'accounts:profile' following.user.pk %}">{{following.user.nickname}}</a>
+            </div>
+          {% endfor %}
+          <div class='d-grid mt-5'>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" aria-label="Close">닫기</button>
+          </div>
         </div>
       </div>
     </div>
