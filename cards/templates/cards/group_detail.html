@@ -296,7 +296,7 @@
     
         </div>
         {% endif %}
-        <p class=' my-5 fs-1 text-center' style='color:white'>{{ cards.title }}</p>
+        <p class=' my-5 fs-1 text-center' style='color:white'>{{ cards.user.nickname }} 님에게 <span style='color:orangered '>{{ comments.count }}</span>개의 메세지가 전달됐어요!</p>
         <div>
           <!-- 벽난로 주인의 장식 모달 창 -->
           <div class="modal fade" id="owner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -307,8 +307,7 @@
                     <img src='/static/images/유저장식{{ cards.groupdeco }}.png' style='width:5rem;'>
                   </div>
                   <div class='mb-2 rounded-2 p-1'>
-                    <p class=' my-5 fs-1 text-center' style='color:white'>{{ cards.title }} <br> 
-                      벽난로 <span style='color:orangered '>{{ comments.count }}</span>개의 메세지가 전달됐어요!</p>
+                    <p class='text-center fs-5 my-3 mb-5'>{{ cards.title }} </p>
                     <p class='my-1' style="white-space: pre-line;">{{ cards.content }} </p>
                   </div>
                   <div class='d-grid mt-5'>
@@ -492,9 +491,9 @@
         </div>
         <div class='mb-2 rounded-2 p-1'>
           {% if comment.user.nickname %}
-          <p class='fs-5 text-center m-0 p-0'>{{ comment.user.nickname }} </p>
+          <p class='fs-5 text-center m-0 p-0'  href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user.nickname }} </p>
           {% else %}
-          <p class='fs-5 text-center m-0 p-0'>{{ comment.user }} </p>
+          <p class='fs-5 text-center m-0 p-0'  href='{% url 'accounts:profile' comment.user.pk %}'>{{ comment.user }} </p>
           {% endif %}
           <p class='small pt-1 text-end'>{{ comment.created_at }}</p>
           <p class='my-1 px-2 text-start' style="white-space: pre-line;"> {{ comment.content }} </p>
@@ -632,4 +631,3 @@
       }
     </script>
     {% endblock %}
-
