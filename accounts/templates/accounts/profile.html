@@ -271,7 +271,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body pt-1">
-          <h4>팔로워 목록</h4>
+          <h4 class="text-center mt-3">팔로워 목록</h4>
           {% for follower in user.followers.all %}
             <div class='d-flex justify-content-center'>
               <a class="text-decoration-none" href="{% url 'accounts:profile' follower.pk %}">{{follower.nickname}}</a>
@@ -289,7 +289,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body pt-1">
-          <h4>팔로잉 목록</h4>
+          <h4 class="text-center mt-3">팔로잉 목록</h4>
           {% for following in user.followings.all %}
             <div class='d-flex justify-content-center'>
               <a class="text-decoration-none" href="{% url 'accounts:profile' following.pk %}">{{following.nickname}}</a>
