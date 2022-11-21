@@ -248,11 +248,15 @@
               </div>
             </a>
           {% else %}
-            <div class="p-5 my-5">
-              <a href="{% url 'cards:usercard_create' %}" class="btn" style='background-color:orangered;color:white'>
-                개인 벽난로를 생성해주세요!
-              </a>
-            </div>
+            {% if request.user == user %}
+              <div class="p-5 my-5">
+                <a href="{% url 'cards:usercard_create' %}" class="btn" style='background-color:orangered;color:white'>
+                  개인 벽난로를 생성해주세요!
+                </a>
+              </div>
+            {% else %}
+              <p>아직 개인 벽난로가 없어요.😂</p>
+            {% endif %}
 
           {% endif %}
         </div>
