@@ -491,6 +491,7 @@ def search(request):
     search = request.GET.get("search")
     paginator = Paginator(all_data, 6)
     page_obj = paginator.get_page(request.GET.get("page"))
+    print(request.GET)
     if search:
         search_list = all_data.filter(Q(title__icontains=search))
         paginator = Paginator(search_list, 6)
@@ -508,7 +509,6 @@ def search(request):
         }
 
     return render(request, "cards/search.html", context)
-
 
 from django.http import JsonResponse
 
