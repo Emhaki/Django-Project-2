@@ -99,18 +99,6 @@ WSGI_APPLICATION = "semi_pjt_2.wsgi.application"
 #     }
 # }
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "kdt_6_rds", # 코드 블럭 아래 이미지 참고하여 입력
-#         "USER": "postgres",
-#         "PASSWORD": "faker1121", # 데이터베이스 생성 시 작성한 패스워드
-#         "HOST": "kdt-6-rds.cjszo6864ame.ap-northeast-2.rds.amazonaws.com", # 코드 블럭 아래 이미지 참고하여 입력
-#         "PORT": "5432",
-#     }
-# }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
