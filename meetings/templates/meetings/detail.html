@@ -67,9 +67,15 @@
           </div>
           <div class="col-4 d-flex flex-column align-items-center"> {% comment %}  {% endcomment %}
               {% csrf_token %}
+              {% if request.user in user_list %}
+              <button class="text-decoration-none fs-4 btn btn-outline-dark" style="width: 110px;" data-user-nickname="{{meeting.user.nickname}}" value="{{meeting.user.pk}}" onclick="block(event)">
+                참여취소
+              </button>
+            {% else %}
                 <button class="text-decoration-none fs-4 btn btn-outline-dark" style="width: 110px;" data-user-nickname="{{meeting.user.nickname}}" value="{{meeting.user.pk}}" onclick="block(event)">
                   참여하기
                 </button>
+            {% endif %}
             <div class="d-flex jusify-content-center mt-4">
               <div class="" style="min-width:150px; max-width:160px; min-height:120px">
                 <div class="d-flex justify-content-center">
