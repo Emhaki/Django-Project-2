@@ -81,9 +81,11 @@
                 <div class="d-flex justify-content-center">
                   참여 유저
                 </div>
-                <div id="nickname">
-                  {% for user in user_list %}                
+                <div>
+                  {% for user in user_list %}
+                  <div id="nickname">
                     <a class="ms-2 text-decoration-none text-black d-flex justify-content-center" href="{% url 'accounts:profile' user.pk %}">{{ user.nickname }}</a>
+                  </div>
                   {% endfor %}
                 </div>
               </div>
