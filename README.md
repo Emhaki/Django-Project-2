@@ -240,7 +240,7 @@ def index(request):
         return render(request, "meetings/index.html", context)
   ```
 
-## 6.팀원 후기
+## 6.팀원들의 후기
 
 문경욱😍
 ```
