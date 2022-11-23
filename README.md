@@ -102,4 +102,101 @@
 ![018](https://user-images.githubusercontent.com/105331868/203493671-ae2f8b04-f284-45d7-8fa0-3e62376e6c21.png)
 ![019](https://user-images.githubusercontent.com/105331868/203493721-6d20273a-f178-4336-bd96-e7a73a47e2bd.png)
 
-> 팀원들과 함께 기능들의 모델설계, 모임부분과 쪽지 부분을 담당
+> 프로젝트 시작 전 팀원들과 프로젝트 기획, 각 기능들의 모델설계
+> 기능별로는 모임부분과 쪽지 부분의 HTML, CSS, django views를 담당.
+> views의 복잡한 기능들은 팀원들과 함께 고민하고 작업
+
+## 5. 프로젝트 후기 🌲
+
+> 여러가지 기능들을 앱별로 분류해본 경험이 처음이었다. 잘하는 팀원들과 만나서 공동작업을 하면서 자극을 많이 받았고, 팀원들에게 도움이 되고 싶다는 생각이 많이 들었다. 
+
+> 한 HTML에서 많은 기능들을 렌더링하려고 하다보니 다양한 변수들에 부딪혔다. django HTML에서 For문을 통해 반복출력을 할때 서버단에서 컨트롤을 잘 해줘야한다는 것을 깨달았고, 각 모임의 비밀번호 입력을 위해 모달을 설정할 때 id값을 일치시키는 방법에도 애를 먹었었다. 
+
+> 모임페이지에서 지역별로 검색이 가능한데, 지역별로 검색한 내용을 서버단으로 전송할 때 클린 코드를 구현하려고 노력했다. 
+```html 
+<div class="d-flex align-items-center">
+    <form action="{% url 'meetings:index'%}" method="POST" class="m-1">
+      {% csrf_token %}
+      <button id="custom-btn" name="reset" value="reset" style="background-color:transparent;">
+        모두보기
+      </button>
+    </form>
+    {% for local in meetings_local_list %}
+    <span class="mx-1">|
+      <a href="?local={{local}}" class="mx-1 custom-link" style="text-decoration:none">
+      {{ local }}
+      </a>
+    </span>
+    {% endfor %}
+  </div>
+  ```
+  ```py
+  @login_required
+def index(request):
+    meetings = Meeting.objects.order_by("-pk")
+    # 사용자가 블락안한 모임
+    block = Meeting.objects.exclude(user__in=request.user.blocking.all()).order_by("-pk")
+    # 사용자가 블락한 모임
+    non_block = Meeting.objects.filter(user__in=request.user.blocking.all()).order_by("-pk")
+    img = [
+        "https://images.unsplash.com/photo-1615097130643-12caeab3c625?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "https://images.unsplash.com/photo-1577042939454-8b29d442b402?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1638277267253-543e4c57cd7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "https://images.unsplash.com/photo-1543258103-a62bdc069871?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGNocmlzdG1hc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1575549593677-012f18048ea1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGNocmlzdG1hc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1602678460152-719a9af1fb6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGNocmlzdG1hc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1512474932049-78ac69ede12c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTh8fGNocmlzdG1hc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1511970093628-4e9f59378b4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fGNocmlzdG1hc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1482330454287-3cf6611d0bc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjN8fGNocmlzdG1hc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1545608444-f045a6db6133?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjV8fGNocmlzdG1hc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+    ]
+    random.shuffle(img)
+    # 총 모임 - 블락한 모임
+    meetings_count = len(meetings) - len(non_block)
+
+    # 지역별
+    meetings_local_name = "모든지역"
+    meetings_local_list = ["강남", "건대" ,"노원", "대학로", "부평", "신촌", "수원", "일산", "종로", "잠실", "홍대", "하남"]
+
+    at_all = "모두보기"
+    paginator = Paginator(block, 8)
+    page_number = request.GET.get("local")
+    page_obj = paginator.get_page(page_number)
+    if request.POST.get("reset"):
+        return redirect("meetings:index")
+    if request.GET.get("local"):
+        name = re.sub(r"[0-9]", "", request.GET.get("local"))
+        block = (
+            Meeting.objects.filter(location__contains=name)
+            .exclude(user__in=request.user.blocking.all())
+            .order_by("-pk")
+        )
+        if not name:
+            meetings_local_name = "모든지역"
+        else:
+            meetings_local_name = name
+        # 페이지네이션
+        paginator = Paginator(block, 8)
+        page_number = re.sub(r"[^0-9]", "", request.GET.get("local"))  # key 값이 local, value 값이 노원구
+        page_obj = paginator.get_page(page_number)  # 숫자만 받음
+        context = {
+            "nw": name,
+            "img": img,
+            "page_obj": page_obj,
+            "meetings_local_name": meetings_local_name,
+            "meetings_count": len(block),
+            "meetings_local_list": meetings_local_list,
+        }
+        return render(request, "meetings/index.html", context)
+    else:
+
+        context = {
+            "at_all": at_all,
+            "img": img,
+            "page_obj": page_obj,
+            "meetings_local_name": meetings_local_name,
+            "meetings_count": meetings_count,
+            "meetings_local_list": meetings_local_list,
+        }
+        return render(request, "meetings/index.html", context)
+  ```
