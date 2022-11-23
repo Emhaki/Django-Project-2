@@ -81,11 +81,25 @@
 
 > ⬆️ 불쾌한 유저를 `차단시 그 유저가 생성했던 모임들을 필터링`
 
-### 3-7. 쇼핑
+### 3-7. 쪽지
+
+![쪽지-min](https://user-images.githubusercontent.com/105331868/203493131-00c5e22f-a3a2-4db2-ba42-1163d035dc8d.gif)
+
+> ⬆️ 비밀번호 방 입장을 위해 유저에게 쪽지를 보낼 수 있음. 편지함에 보낸 편지함, 받은 편지함으로 구성, `보낸사람 입장에서 상대방이 읽었는지 안읽었는지 확인` 가능
+
+### 3-8. 쇼핑
 
 ![쇼핑-min](https://user-images.githubusercontent.com/105331868/203492111-1896d457-21b7-4d1c-a211-97a1e800def8.gif)
 
 > ⬆️ 네이버 API를 통해 `가격순, 날짜순, 정확도순으로 검색` 가능
 
+## 4. 기여한 부분 🌲
+![013](https://user-images.githubusercontent.com/105331868/203493562-8aea3649-09c7-4d77-aea5-0c2b5c71bb42.png)
+![014](https://user-images.githubusercontent.com/105331868/203493611-bb254168-b106-45b6-a2be-807de8f068f5.png)
+![015](https://user-images.githubusercontent.com/105331868/203493628-d007e8ec-9e39-4805-8f6c-b647b06d1bf5.png)
+![016](https://user-images.githubusercontent.com/105331868/203493640-1bbf3efa-57c4-408c-85df-acf933e93677.png)
+![017](https://user-images.githubusercontent.com/105331868/203493660-e4f54d83-9e09-477b-861f-1d513049e6c6.png)
+![018](https://user-images.githubusercontent.com/105331868/203493671-ae2f8b04-f284-45d7-8fa0-3e62376e6c21.png)
+![019](https://user-images.githubusercontent.com/105331868/203493721-6d20273a-f178-4336-bd96-e7a73a47e2bd.png)
 
-
+> 팀원들과 함께 기능들의 모델설계, 모임부분과 쪽지 부분을 담당
