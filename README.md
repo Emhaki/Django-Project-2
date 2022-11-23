@@ -49,11 +49,14 @@
 
 ![Untitled (4)](https://user-images.githubusercontent.com/105331868/203472736-833d1abd-ced6-42fa-807e-9470dea66b19.png)
 
-> 카카오 API를 통해 소셜로그인 기능
+> ⬆️카카오 API를 통해 소셜로그인 기능
 
 ![Untitled (5)](https://user-images.githubusercontent.com/105331868/203472953-a575231e-2798-49df-a21d-76d6c9e3388c.png)
+![벽난로1-min](https://user-images.githubusercontent.com/105331868/203476224-acc95667-c0e9-4b18-bd1b-bb154b0b890f.gif)
 
-> 로그인 후 개인벽난로를 생성해 다른 회원들이 메세지를 보낼 수 있음
+> ⬆️로그인 후 개인벽난로를 생성해 다른 회원들이 메세지를 보낼 수 있음(다른 회원이 벽난로에 글을 작성하면 카카오톡 알림)
+
+
 
 
 
