@@ -39,11 +39,13 @@
 
 <br>
 
-### 2-1. 메인 페이지
+## 3. 주요 기능 🌲
+
+### 3-1. 메인 페이지
 
 ![Untitled (1)](https://user-images.githubusercontent.com/105331868/203472209-3ba784b2-6e3b-4515-ac60-ebc31c33ec28.png)
 
-### 2-2. 벽난로 생성(개인)
+### 3-2. 벽난로 생성(개인)
 
 ![Untitled (4)](https://user-images.githubusercontent.com/105331868/203472736-833d1abd-ced6-42fa-807e-9470dea66b19.png)
 
