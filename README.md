@@ -242,6 +242,86 @@ def index(request):
         return render(request, "meetings/index.html", context)
   ```
 
+### 쪽지 HTML 코드 일부분
+```html
+<div id="container" class="container mt-4" style="max-width:550px;">
+  <div class="d-flex justify-content-center mb-2" id="profile">
+    <img id="profileimage" src="{{note.from_user.profileimage}}" alt="프로필 이미지" style="width: 120px; height:120px;" class="rounded-circle">
+  </div>
+    <div id="container" class="container p-0">
+      <div class="card" style="border-radius: 18px;"  id="cust-card">
+        <div style="height: 70px;">
+        </div>
+        <hr>
+        <div class="container ms-3">
+          <div class="fs-4 fw-bold">{{ note.title }}</div>
+          <div class="fs-5">
+            <p>{{ note.content }}</p>
+          </div>
+        </div>
+        <hr>
+          <a style="text-decoration:none;" href="{% url 'notes:send' note.from_user.pk %}" class="fs-6 d-flex justify-content-end me-3 text-black custom-link">답장하기</a>
+        <div class="d-flex justify-content-end mx-3">          
+          <a class="custom-link fs-4" id="btn-modal">
+            <span class="fs-6">from. </span>
+            {% if note.from_user.nickname %}
+            {{ note.from_user.nickname }}
+            {% else %}
+            {{ note.from_user.username }}
+            {% endif %}
+          </a>
+        </div>
+        
+        <div class="d-flex justify-content-end">
+          <small class="mx-3 mb-2">
+            {{ note.created_at|date:'o.m.d' }} {{ note.created_at|time:"H:i" }}
+          </small>
+        </div>
+        <div id="modal" class="modal-overlay">
+            <div class="modal-window">
+                <div class="title">
+                    <h2>
+                      {% if note.from_user.nickname %}
+                      {{ note.from_user.nickname }}
+                      {% else %}
+                      {{ note.from_user.username }}
+                      {% endif %}
+                    </h2>
+                </div>
+                <div class="close-area">X</div>
+                <div class="content">
+                    <h3><a href="{% url 'accounts:profile' request.user.pk %}" class="text-decoration-none text-white">프로필</a></h3>
+                    <h3><a href="{% url 'notes:send' note.from_user.pk %}" class="text-decoration-none text-white">쪽지</a></h3>
+                    <h3><a href="{% url 'accounts:follow' request.user.pk %}" class="text-decoration-none text-white">팔로우</a></h3>
+                    <h3><a href="{% url 'accounts:block' request.user.pk %}" class="text-decoration-none text-white">차단</a></h3>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+```
+
+### 쪽지 Python 코드 일부분
+```py
+def detail(request, pk):
+    note = get_object_or_404(Notes, pk=pk)
+
+    if request.user == note.to_user:
+        if not note.read:
+            note.read = True
+            note.save()
+        if not request.user.user_to.filter(read=False).exists():
+            request.user.notice_note = True
+            request.user.save()
+        return render(request, "notes/detail.html", {"note": note})
+    elif request.user == note.from_user:
+        return render(request, "notes/detail.html", {"note": note})
+    else:
+        messages.error(request, "그렇게는 볼 수 없어요.😅")
+        return redirect("notes:index")
+```
+
 ## 6.팀원들의 후기
 
 문경욱😍
