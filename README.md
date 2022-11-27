@@ -152,7 +152,7 @@
 
 - 아래의 코드는 views.py에서 지역 리스트를 HTML로 뿌려주고, HTML에서 django for문을 통해 렌더링하고, 반복문 속에 a링크를 서버에 전송해 DB에서 데이터를 뽑아주려고 했다. 한 함수안에서 처리될 수 있도록 고민했다.
 
-### Meeting HTML 코드 
+### Meeting HTML 코드 일부분
 ```html 
 <div class="d-flex align-items-center">
     <form action="{% url 'meetings:index'%}" method="POST" class="m-1">
